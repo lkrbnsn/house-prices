@@ -1,0 +1,25 @@
+
+body {
+	font-family: "Open Sans", Helvetica, sans-serif;
+	background-color: #f9f9f9;
+  	margin: auto;
+	text-align: center;
+}
+h1 {
+  color: #428bca;
+}
+p {
+  color: #428bca;
+}
+canvas {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  /*width: 40%;*/
+}
+
+#d9534f
+#f9f9f9
+#5bc0de
+#5cb85c
+#428bca

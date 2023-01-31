@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+<body>
+
+  <h1>Irish House Prices Today</h1>
+  <h3>Daily data on how expensive houses are in Ireland</h3>
+
+  <canvas id="myChart" style="width:100%;max-width:600px"></canvas>
+
+  <p>Data taken from <a href="https://daft.ie">daft.ie</a> on 30-01-2023</p>
+
+<script>
+var xValues = ["225-250", "250-275", "275-300", "300-325", "325-350"];
+var yValues = [18, 37, 44, 42, 28];
+// var barColors = ["red", "green","blue","orange","brown"];
+
+new Chart("myChart", {
+  type: "bar",
+  data: {
+    labels: xValues,
+    datasets: [{
+
+      backgroundColor: "#d9534f",
+      borderWidth: 2,
+      borderRadius: 5,
+      borderSkipped: false,
+      data: yValues
+
+    }]
+  },
+  options: {
+    responsive: true,
+    legend: {display: false},
+    title: {
+      display: true,
+      text: "House Prices"
+    }
+  }
+});
+</script>
+
+</body>
+</html>
