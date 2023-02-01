@@ -16,13 +16,17 @@
   <p>Data taken from <a href="https://daft.ie">daft.ie</a> on 30-01-2023</p>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
-<script type="text/javascript" src="data.json"></script>
+<!-- <script type="text/javascript" src="data.json"></script> -->
+<script src="data.js"></script>
 <script>
-var mydata = JSON.parse(data);
-// alert(mydata[0]);
+// var mydata = data.json;
+// var data = fetch('./data.json'); //with path
+// import data from 'data.json' assert {type: 'json'};
+
+// alert(data[0]);
 var xValues = ["225-250", "250-275", "275-300", "300-325", "325-350"];
 // var yValues = [18, 37, 44, 42, 28];
-var yValues = mydata;
+var yValues = data;
 // var barColors = ["red", "green","blue","orange","brown"];
 
 new Chart("myChart", {
