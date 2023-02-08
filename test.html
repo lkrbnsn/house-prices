@@ -72,9 +72,10 @@
   </div> 
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
-  <!-- <script type="text/javascript" src="data.json"></script> -->
-  <script src="data.js"></script>
+  <script type="text/javascript" src="data.json"></script>
   <script>
+
+  const obj = JSON.parse(data);
 
   // function setAction(form) {
   // }
@@ -85,16 +86,17 @@
   if (params.get('location')) {
     document.getElementById("location").value = params.get('location');
   }
-    if (params.get('property_type')) {
+  if (params.get('property_type')) {
     document.getElementById("property_type").value = params.get('property_type');
+    // Select the right data from the json file
+    var yValues = obj[params.get('location')][params.get('property_type')];
   }
 
 
 
-  // alert(data[0]);
-  var xValues = ["225-250", "250-275", "275-300", "300-325", "325-350"];
+  // Values we want to plot against
+  var xValues = ["200-225", "225-250", "250-275", "275-300", "300-325", "325-350", "350-375", "375-400", "400-425", "425-450", "450-475", "475-500", "500-525", "525-550", "550-575"];
   // var yValues = [18, 37, 44, 42, 28];
-  var yValues = data;
   // var barColors = ["red", "green","blue","orange","brown"];
 
   if (params.get('property_type') == "house") {

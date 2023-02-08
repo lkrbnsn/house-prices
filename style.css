@@ -5,6 +5,10 @@ body {
   	color: #1E1E24;
   	margin: auto;
 	text-align: center;
+
+	min-height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 canvas {
   display: block;
@@ -30,10 +34,7 @@ canvas {
 }*/
 
 .footer {
-  position: fixed;
-  left: 0;
-  bottom: 0;
-  width: 100%;
+  margin-top: auto;
   background-color: #1E1E24;
   color: #FFF8F0;
   font-size: 0.8em;
