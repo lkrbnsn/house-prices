@@ -11,48 +11,121 @@
   <h1>Irish House Prices Today</h1>
   <h3>Daily data on how expensive houses are in Ireland</h3>
 
+  <form>
+    <label for="location">Location:</label>
+    <select name="location" id="location">
+      <option value='all'>All</option>
+      <option value='antrim'>Antrim</option>
+      <option value='armagh'>Armagh</option>
+      <option value='cavan'>Cavan</option>
+      <option value='carlow'>Carlow</option>
+      <option value='clare'>Clare</option>
+      <option value='cork'>Cork</option>
+      <option value='derry'>Derry</option>
+      <option value='down'>Down</option>
+      <option value='donegal'>Donegal</option>
+      <option value='dublin'>Dublin</option>
+      <option value='fermanagh'>Fermanagh</option>
+      <option value='galway'>Galway</option>
+      <option value='kerry'>Kerry</option>
+      <option value='kildare'>Kildare</option>
+      <option value='kilkenny'>Kilkenny</option>
+      <option value='laois'>Laois</option>
+      <option value='mayo'>Mayo</option>
+      <option value='meath'>Meath</option>
+      <option value='monaghan'>Monaghan</option>
+      <option value='leitrim'>Leitrim</option>
+      <option value='limerick'>Limerick</option>
+      <option value='longford'>Longford</option>
+      <option value='louth'>Louth</option>
+      <option value='offaly'>Offaly</option>
+      <option value='roscommon'>Roscommon</option>
+      <option value='sligo'>Sligo</option>
+      <option value='tipperary'>Tipperary</option>
+      <option value='tyrone'>Tyrone</option>
+      <option value='waterford'>Waterford</option>
+      <option value='westmeath'>Westmeath</option>
+      <option value='wexford'>Wexford</option>
+      <option value='wicklow'>Wicklow</option>
+
+    </select>
+    <label for="property_type">Property Type:</label>
+    <select name="property_type" id="property_type">
+      <option value="any">Any Property</option>
+      <option value="house">House</option>
+      <option value="detached_house">Detached House</option>
+      <option value="apartment">Apartment</option>
+      <option value="bungalow">Bungalow</option>
+      <option value="site">Site</option>
+    </select>
+    <br><br>
+    <input type="submit" value="Show Prices">
+  </form>
+
   <canvas id="myChart" style="width:100%;max-width:600px"></canvas>
 
   <p>Data taken from <a href="https://daft.ie">daft.ie</a> on 30-01-2023</p>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
-<!-- <script type="text/javascript" src="data.json"></script> -->
-<script src="data.js"></script>
-<script>
-// var mydata = data.json;
-// var data = fetch('./data.json'); //with path
-// import data from 'data.json' assert {type: 'json'};
+  <div class="footer">
+    <p>Crafted with care in Ireland</p>
+    <p>© 2023</p>
+  </div> 
 
-// alert(data[0]);
-var xValues = ["225-250", "250-275", "275-300", "300-325", "325-350"];
-// var yValues = [18, 37, 44, 42, 28];
-var yValues = data;
-// var barColors = ["red", "green","blue","orange","brown"];
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+  <!-- <script type="text/javascript" src="data.json"></script> -->
+  <script src="data.js"></script>
+  <script>
 
-new Chart("myChart", {
-  type: "bar",
-  data: {
-    labels: xValues,
-    datasets: [{
+  // function setAction(form) {
+  // }
 
-      backgroundColor: "#d9534f",
-      borderWidth: 2,
-      borderRadius: 5,
-      borderSkipped: false,
-      data: yValues
+  let params = new URLSearchParams(window.location.search);
 
-    }]
-  },
-  options: {
-    responsive: true,
-    legend: {display: false},
-    title: {
-      display: true,
-      text: "House Prices"
-    }
+  // Make the dropdown forms sticky
+  if (params.get('location')) {
+    document.getElementById("location").value = params.get('location');
   }
-});
-</script>
+    if (params.get('property_type')) {
+    document.getElementById("property_type").value = params.get('property_type');
+  }
+
+
+
+  // alert(data[0]);
+  var xValues = ["225-250", "250-275", "275-300", "300-325", "325-350"];
+  // var yValues = [18, 37, 44, 42, 28];
+  var yValues = data;
+  // var barColors = ["red", "green","blue","orange","brown"];
+
+  if (params.get('property_type') == "house") {
+    var yValues = house_data;
+    // alert("yurt");
+  }
+
+  new Chart("myChart", {
+    type: "bar",
+    data: {
+      labels: xValues,
+      datasets: [{
+
+        backgroundColor: "#92140C",
+        borderWidth: 2,
+        borderRadius: 5,
+        borderSkipped: false,
+        data: yValues
+
+      }]
+    },
+    options: {
+      responsive: true,
+      legend: {display: false},
+      title: {
+        display: true,
+        text: "House Prices"
+      }
+    }
+  });
+  </script>
 
 </body>
 </html>

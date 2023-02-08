@@ -1,5 +1,17 @@
 from daftlistings import Daft, Location, SearchType, PropertyType
 import json
+from datetime import date
+
+daft = Daft()
+
+myloc = Location
+daft.set_location(myloc.DUBLIN)
+# for i in dir(myloc):
+for i in myloc.__dict__.items():
+	if not ("_" in i[0]):
+		print(i[0])
+		daft.set_location("DUBLIN")
+exit()
 
 data_array = []
 
@@ -28,5 +40,9 @@ data = data_array
 json_string = json.dumps(data)
 print(json_string)
 
-with open('data.js', 'w') as outfile:
-    outfile.write("var data = " + json_string + ";")
+today = date.today()
+
+with open('data.js', 'w') as data_file:
+    data_file.write("var data = " + json_string + ";")
+
+    data_file.write(("var date = \"" + today + "\";"))
