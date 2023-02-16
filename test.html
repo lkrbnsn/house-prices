@@ -52,11 +52,17 @@
     <label for="property_type">Property Type:</label>
     <select name="property_type" id="property_type">
       <option value="any">Any Property</option>
-      <option value="house">House</option>
-      <option value="detached_house">Detached House</option>
-      <option value="apartment">Apartment</option>
-      <option value="bungalow">Bungalow</option>
-      <option value="site">Site</option>
+      <option value="houses">House</option>
+      <option value="detached-houses">Detached House</option>
+      <option value="semi-detached-houses">Semi-Detached House</option>
+      <option value="terraced-houses">Terraced House</option>
+      <option value="end-of-terrace-houses">End-of-Terrace House</option>
+      <option value="townhouses">Townhouse</option>
+      <option value="duplexes">Duplex</option>
+      <option value="bungalows">Bungalow</option>
+      <option value="apartments">Apartment</option>
+      <option value="studio-apartments">Studio Apartment</option>
+      <option value="sites">Site</option>
     </select>
     <br><br>
     <input type="submit" value="Show Prices">
@@ -99,10 +105,10 @@
   // var yValues = [18, 37, 44, 42, 28];
   // var barColors = ["red", "green","blue","orange","brown"];
 
-  if (params.get('property_type') == "house") {
-    var yValues = house_data;
-    // alert("yurt");
-  }
+  var yValues = obj[params.get('location')][params.get('property_type')];
+  // if (params.get('property_type') == "houses") {
+  //   var yValues = obj["carlow"]["any"];
+  // }
 
   new Chart("myChart", {
     type: "bar",
