@@ -81,7 +81,7 @@
   </div> 
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
-  <script type="text/javascript" src="data.json"></script>
+  <script type="text/javascript" src="data/data.json"></script>
   <script>
 
   const obj = JSON.parse(data);
@@ -104,7 +104,7 @@
   document.getElementById("date").innerHTML = "Data taken from <a href=\"https://daft.ie\">daft.ie</a> on " + date;
 
   let property_type = params.get('property_type');
-  property_type = property_type.replace("-", " ");
+  property_type = property_type.replace(/-/gi, " ");
   document.getElementById("message").innerHTML = "There are " + property_type + " in " + params.get('location');
 
   // Values we want to plot against

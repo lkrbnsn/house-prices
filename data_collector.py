@@ -166,13 +166,13 @@ print(json_string)
 
 today = str(date.today())
 
-filename = "data_" + today + ".json"
+filename = "data/data_" + today + ".json"
 
 with open(filename, 'w') as data_file:
     data_file.write("var data = \'" + json_string + "\';\n")
     data_file.write(("var date = \"" + today + "\";\n"))
 
 
-with open("data.json", 'w') as data_file:
+with open("data/data.json", 'w') as data_file:
     data_file.write("var data = \'" + json_string + "\';\n")
     data_file.write(("var date = \"" + today + "\";\n"))
