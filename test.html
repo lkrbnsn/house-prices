@@ -68,9 +68,12 @@
     <input type="submit" value="Show Prices">
   </form>
 
+  &nbsp
+  <a id="message"></a>
+
   <canvas id="myChart" style="width:100%;max-width:600px"></canvas>
 
-  <p>Data taken from <a href="https://daft.ie">daft.ie</a> on 30-01-2023</p>
+  <p id="date">Data taken from <a href="https://daft.ie">daft.ie</a></p>
 
   <div class="footer">
     <p>Crafted with care in Ireland</p>
@@ -98,10 +101,14 @@
     var yValues = obj[params.get('location')][params.get('property_type')];
   }
 
+  document.getElementById("date").innerHTML = "Data taken from <a href=\"https://daft.ie\">daft.ie</a> on " + date;
 
+  let property_type = params.get('property_type');
+  property_type = property_type.replace("-", " ");
+  document.getElementById("message").innerHTML = "There are " + property_type + " in " + params.get('location');
 
   // Values we want to plot against
-  var xValues = ["200-225", "225-250", "250-275", "275-300", "300-325", "325-350", "350-375", "375-400", "400-425", "425-450", "450-475", "475-500", "500-525", "525-550", "550-575"];
+  var xValues = ["0-100", "100-200", "200-300", "300-400", "400-500", "500-600", "600-700", "700-800", "800-900", "900-1000", "1000+"];
   // var yValues = [18, 37, 44, 42, 28];
   // var barColors = ["red", "green","blue","orange","brown"];
 

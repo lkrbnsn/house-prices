@@ -20,34 +20,34 @@ import numpy as np
 location_list = [Location.ANTRIM,
 Location.ARMAGH,
 Location.CAVAN,
-# Location.CARLOW,
-# Location.CLARE,
-# Location.CORK,
-# Location.DERRY,
-# Location.DOWN,
-# Location.DONEGAL,
-# Location.DUBLIN,
-# Location.FERMANAGH,
-# Location.GALWAY,
-# Location.KERRY,
-# Location.KILDARE,
-# Location.KILKENNY,
-# Location.LAOIS,
-# Location.MAYO,
-# Location.MEATH,
-# Location.MONAGHAN,
-# Location.LEITRIM,
-# Location.LIMERICK,
-# Location.LONGFORD,
-# Location.LOUTH,
-# Location.OFFALY,
-# Location.ROSCOMMON,
-# Location.SLIGO,
-# Location.TIPPERARY,
-# Location.TYRONE,
-# Location.WATERFORD,
-# Location.WESTMEATH,
-# Location.WEXFORD,
+Location.CARLOW,
+Location.CLARE,
+Location.CORK,
+Location.DERRY,
+Location.DOWN,
+Location.DONEGAL,
+Location.DUBLIN,
+Location.FERMANAGH,
+Location.GALWAY,
+Location.KERRY,
+Location.KILDARE,
+Location.KILKENNY,
+Location.LAOIS,
+Location.MAYO,
+Location.MEATH,
+Location.MONAGHAN,
+Location.LEITRIM,
+Location.LIMERICK,
+Location.LONGFORD,
+Location.LOUTH,
+Location.OFFALY,
+Location.ROSCOMMON,
+Location.SLIGO,
+Location.TIPPERARY,
+Location.TYRONE,
+Location.WATERFORD,
+Location.WESTMEATH,
+Location.WEXFORD,
 Location.WICKLOW]
 
 property_type_list = [PropertyType.HOUSE,
@@ -169,6 +169,10 @@ today = str(date.today())
 filename = "data_" + today + ".json"
 
 with open(filename, 'w') as data_file:
-    data_file.write("var data = \"" + json_string + "\";")
+    data_file.write("var data = \'" + json_string + "\';\n")
+    data_file.write(("var date = \"" + today + "\";\n"))
 
-    data_file.write(("var date = \"" + today + "\";"))
+
+with open("data.json", 'w') as data_file:
+    data_file.write("var data = \'" + json_string + "\';\n")
+    data_file.write(("var date = \"" + today + "\";\n"))
