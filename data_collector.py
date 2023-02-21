@@ -17,7 +17,8 @@ import numpy as np
 
 # exit()
 
-location_list = [Location.ANTRIM,
+location_list = ["all",
+Location.ANTRIM,
 Location.ARMAGH,
 Location.CAVAN,
 Location.CARLOW,
@@ -50,7 +51,8 @@ Location.WESTMEATH,
 Location.WEXFORD,
 Location.WICKLOW]
 
-property_type_list = [PropertyType.HOUSE,
+property_type_list = ["any",
+PropertyType.HOUSE,
 PropertyType.DETACHED_HOUSE,
 PropertyType.SEMI_DETACHED_HOUSE,
 PropertyType.TERRACED_HOUSE,
@@ -114,14 +116,22 @@ data = {}
 # exit()
 
 for location in location_list:
-	data[location.value["displayValue"]] = {}
+	# Create the parameters in the dictionary to write our array to
+	if (location == "all"):
+		json_location = "all"
+	else:
+		json_location = location.value["displayValue"]
+	data[json_location] = {}
+	
 	for property_type in property_type_list:
 
 		print("Getting data for", property_type, "in", location)
 		daft = Daft()
 		daft.set_search_type(SearchType.RESIDENTIAL_SALE)
-		daft.set_location(location)
-		daft.set_property_type(property_type)
+		if (location != "all"):
+			daft.set_location(location)
+		if (property_type != "any"):
+			daft.set_property_type(property_type)
 		daft._paging["from"] = 0 # Workaround to fix bug in daftlistings
 
 		print(daft._filters)
@@ -148,18 +158,14 @@ for location in location_list:
 			data_list.append(total.size)
 		data_list.append(price_array[price_array > bins[-1]].size) # Get the final amound, > last bin
 
-		# for i in range(225000, 350000, 25000):
-		# 	print(i)
 
-		# 	daft.set_min_price(i)
-		# 	daft.set_max_price(i+25000)
+		if (property_type == "any"):
+			json_property_type = "any"
+		else:
+			json_property_type = property_type.value
 
-		# 	listings = daft.search()
-
-		# 	print(len(listings))
-		# 	data_list.append(len(listings))
-
-		data[location.value["displayValue"]][property_type.value] = data_list
+		# Write to the dictionary
+		data[json_location][json_property_type] = data_list
 
 json_string = json.dumps(data)
 print(json_string)
