@@ -10,7 +10,7 @@
 <body>
 
   <!-- Sidebar/menu -->
-<nav class="w3-sidebar w3-bar-block w3-white w3-collapse w3-top" style="z-index:3;width:250px" id="mySidebar">
+<!-- <nav class="w3-sidebar w3-bar-block w3-white w3-collapse w3-top" style="z-index:3;width:250px" id="mySidebar">
   <div class="w3-container w3-display-container w3-padding-16">
     <i onclick="w3_close()" class="fa fa-remove w3-hide-large w3-button w3-display-topright"></i>
     <h3 class="w3-wide"><b>LOGO</b></h3>
@@ -35,17 +35,17 @@
   <a href="#footer" class="w3-bar-item w3-button w3-padding">Contact</a> 
   <a href="javascript:void(0)" class="w3-bar-item w3-button w3-padding" onclick="document.getElementById('newsletter').style.display='block'">Newsletter</a> 
   <a href="#footer"  class="w3-bar-item w3-button w3-padding">Subscribe</a>
-</nav>
+</nav> -->
 
 <!-- Top menu on small screens -->
-<header class="w3-bar w3-top w3-hide-large w3-black w3-xlarge">
+<!-- <header class="w3-bar w3-top w3-hide-large w3-black w3-xlarge">
   <div class="w3-bar-item w3-padding-24 w3-wide">LOGO</div>
   <a href="javascript:void(0)" class="w3-bar-item w3-button w3-padding-24 w3-right" onclick="w3_open()"><i class="fa fa-bars"></i></a>
-</header>
+</header> -->
 
 <!-- Overlay effect when opening sidebar on small screens -->
-<div class="w3-overlay w3-hide-large" onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div>
-
+<!-- <div class="w3-overlay w3-hide-large" onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div>
+ -->
 
   <h1>Irish House Prices Today</h1>
   <h3>Daily data on how expensive houses are in Ireland</h3>
@@ -108,9 +108,12 @@
   </form>
 
   &nbsp
-  <a id="message"></a>
 
-  <canvas id="myChart" style="width:100%;max-width:600px"></canvas>
+  <div>
+    <canvas id="myChart" style="width:100%;max-width:600px"></canvas>
+    <a id="message"></a>   
+  </div>
+
 
   <p id="date">Data taken from <a href="https://daft.ie">daft.ie</a></p>
 
@@ -143,11 +146,11 @@
     document.getElementById("date").innerHTML = "Data taken from <a href=\"https://daft.ie\">daft.ie</a> on " + date;
 
     let property_type_string = property_type.replace(/-/gi, " ");
-    document.getElementById("message").innerHTML = "There are " + property_type_string + " in " + property_location;
+    document.getElementById("message").innerHTML = "There are " + obj[property_location][property_type]["total"] + " " + property_type_string + " for sale in " + property_location.charAt(0).toUpperCase() + property_location.slice(1) + ", with an average asking price of €" + obj[property_location][property_type]["mean"];
 
     // Values we want to plot against
     var xValues = ["0-100", "100-200", "200-300", "300-400", "400-500", "500-600", "600-700", "700-800", "800-900", "900-1000", "1000+"];
-    var yValues = obj[property_location][property_type];
+    var yValues = obj[property_location][property_type]["bins"];
 
     new Chart("myChart", {
       type: "bar",
@@ -168,7 +171,7 @@
         legend: {display: false},
         title: {
           display: true,
-          text: "House Prices"
+          text: "Price Distribution"
         }
       }
     });
