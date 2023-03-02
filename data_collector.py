@@ -1,6 +1,6 @@
 from daftlistings import Daft, Location, SearchType, PropertyType
 import json
-from datetime import date
+import datetime
 # import pandas as pd
 import numpy as np
 import statistics
@@ -69,52 +69,20 @@ PropertyType.SITE
 bins = [100000, 200000, 300000, 400000, 500000, 600000, 700000, 800000, 900000, 1000000]
 step_size = bins[1] - bins[0]
 
+# Pull in the data from the last 6 days, we'll need it
+old_json_data_list = [] # List to hold each of the dictionaries
+for i in range(6,0,-1):
+	old_filename = "data/data_" + str(datetime.date.today() - datetime.timedelta(days = i)) + ".json"
+	print(old_filename)
+	with open(old_filename, 'r') as old_data_file:
+		first_line = old_data_file.readline()
+		first_line = (first_line.split("\'"))[1].split("\'")[0]
+		old_json_data = json.loads(first_line)
+		old_json_data_list.append(old_json_data)
+
+
+# Dictionary to hold all the data we're going to write to the json file
 data = {}
-
-# daft = Daft()
-# daft.set_search_type(SearchType.RESIDENTIAL_SALE)
-
-
-# daft.set_location(Location.WICKLOW)
-# print(property_type_list[2])
-# daft.set_property_type(property_type_list[2])
-
-# print(daft._filters)
-# listings = daft.search()
-# daft.set_location(Location.WICKLOW)
-# print(property_type_list[8])
-# daft.set_property_type(property_type_list[8]) # TODO why is this different??
-# print(daft._filters)
-# listings = daft.search()
-# exit()
-
-# test_price_list = []
-# daft.set_location(Location.DUBLIN)
-# daft.set_property_type(PropertyType.DETACHED_HOUSE)
-# listings = daft.search()
-# for listing in listings:
-# 	price = listing.price
-# 	# Remove all unwanted characters and convert to int
-# 	price = price.replace("€", "")
-# 	price = price.replace(",", "")
-# 	price = price.replace("AMV: ", "")
-# 	if(price.isdigit()):
-# 		test_price_list.append(int(price))
-
-# print(len(test_price_list))
-
-# # Convert to numpy array so we can calculate the amounts for each bin
-# test_price_array = np.array(test_price_list)
-# for i in bins:
-# 	total_less_than = test_price_array[test_price_array <= i]
-# 	total = total_less_than[total_less_than > (i-step_size)]
-# 	print(total.size)
-# print(test_price_array[test_price_array > bins[-1]].size) # Get the final amound, > last bin
-
-# print(len(test_price_list))
-# print(test_price_list)
-
-# exit()
 
 for location in location_list:
 	# Create the parameters in the dictionary to write our array to
@@ -173,13 +141,22 @@ for location in location_list:
 			data[json_location][json_property_type]["mean"] = round(statistics.mean(price_list), 0)
 		else:
 			data[json_location][json_property_type]["mean"] = 0
-		
+
+		# Get the seven day price list from the old data
+		seven_day_price_list = []
+		for i in old_json_data_list:
+			seven_day_price_list.append(i[json_location][json_property_type]["mean"])
+
+		# Seventh day is today
+		seven_day_price_list.append(data[json_location][json_property_type]["mean"])
+
+		data[json_location][json_property_type]["seven_day"] = seven_day_price_list
 
 
 json_string = json.dumps(data)
 print(json_string)
 
-today = str(date.today())
+today = str(datetime.date.today())
 
 filename = "data/data_" + today + ".json"
 

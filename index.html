@@ -110,10 +110,13 @@
   &nbsp
 
   <div>
-    <canvas id="myChart" style="width:100%;max-width:600px"></canvas>
+    <canvas id="distribution_chart" style="width:100%;max-width:600px"></canvas>
     <a id="message"></a>   
   </div>
 
+  <div>
+    <canvas id="trend_chart" style="width:100%;max-width:600px"></canvas>   
+  </div>
 
   <p id="date">Data taken from <a href="https://daft.ie">daft.ie</a></p>
 
@@ -160,7 +163,7 @@
     var xValues = ["0-100", "100-200", "200-300", "300-400", "400-500", "500-600", "600-700", "700-800", "800-900", "900-1000", "1000+"];
     var yValues = obj[property_location][property_type]["bins"];
 
-    new Chart("myChart", {
+    new Chart("distribution_chart", {
       type: "bar",
       data: {
         labels: xValues,
@@ -184,16 +187,30 @@
       }
     });
 
-    // Open and close sidebar
-    function w3_open() {
-      document.getElementById("mySidebar").style.display = "block";
-      document.getElementById("myOverlay").style.display = "block";
-    }
-     
-    function w3_close() {
-      document.getElementById("mySidebar").style.display = "none";
-      document.getElementById("myOverlay").style.display = "none";
-    }
+    var xValues = ["1", "2", "3", "4", "5", "6", "7"];
+    var yValues = obj[property_location][property_type]["seven_day"];
+
+    new Chart("trend_chart", {
+      type: "line",
+      data: {
+        labels: xValues,
+        datasets: [{
+          fill: false,
+          backgroundColor: "#92140C",
+          borderColor: "#92140C",
+          data: yValues
+        }]
+      },
+      options: {
+        responsive: true,
+        legend: {display: false},
+        title: {
+          display: true,
+          text: "Average Price Trend"
+        }
+      }
+    });
+
   </script>
 
 </body>
