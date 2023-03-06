@@ -71,8 +71,10 @@ step_size = bins[1] - bins[0]
 
 # Pull in the data from the last 6 days, we'll need it
 old_json_data_list = [] # List to hold each of the dictionaries
+date_list = [] # List to hold each of the dates for display purposes
 for i in range(6,0,-1):
 	old_filename = "data/data_" + str(datetime.date.today() - datetime.timedelta(days = i)) + ".json"
+	date_list.append(str(datetime.date.today() - datetime.timedelta(days = i)))
 	print(old_filename)
 	with open(old_filename, 'r') as old_data_file:
 		first_line = old_data_file.readline()
@@ -80,6 +82,7 @@ for i in range(6,0,-1):
 		old_json_data = json.loads(first_line)
 		old_json_data_list.append(old_json_data)
 
+date_list.append(str(datetime.date.today()))
 
 # Dictionary to hold all the data we're going to write to the json file
 data = {}
@@ -163,8 +166,10 @@ filename = "data/data_" + today + ".json"
 with open(filename, 'w') as data_file:
     data_file.write("var data = \'" + json_string + "\';\n")
     data_file.write(("var date = \"" + today + "\";\n"))
+    data_file.write(("var date_list = " + str(date_list) + ";\n"))
 
 
 with open("data/data.json", 'w') as data_file:
     data_file.write("var data = \'" + json_string + "\';\n")
     data_file.write(("var date = \"" + today + "\";\n"))
+    data_file.write(("var date_list = " + str(date_list) + ";\n"))
