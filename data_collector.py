@@ -74,7 +74,7 @@ old_json_data_list = [] # List to hold each of the dictionaries
 date_list = [] # List to hold each of the dates for display purposes
 for i in range(6,0,-1):
 	old_filename = "data/data_" + str(datetime.date.today() - datetime.timedelta(days = i)) + ".json"
-	date_list.append(str(datetime.date.today() - datetime.timedelta(days = i)))
+	date_list.append((datetime.date.today() - datetime.timedelta(days = i)).strftime("%d %b"))
 	print(old_filename)
 	with open(old_filename, 'r') as old_data_file:
 		first_line = old_data_file.readline()
@@ -82,7 +82,7 @@ for i in range(6,0,-1):
 		old_json_data = json.loads(first_line)
 		old_json_data_list.append(old_json_data)
 
-date_list.append(str(datetime.date.today()))
+date_list.append(datetime.date.today().strftime("%d %b"))
 
 # Dictionary to hold all the data we're going to write to the json file
 data = {}
