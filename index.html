@@ -3,14 +3,30 @@
 <head>
   <title>Irish House Prices Today</title>
   <link rel="stylesheet" href="style.css">
-  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 
 
 <body>
 
   <div class="header">
-    <h1>Irish House Prices Today</h1>   
+    <!-- <h1>Irish House Prices Today</h1> -->
+    <!-- <a href="index.html"><img src="logo_full.png" id="logo"></a> -->
+    <img src="logo_full.png" id="logo">
+    <!-- "Hamburger menu" / "Bar icon" to toggle the navigation links -->
+    <a href="javascript:void(0);" class="icon" onclick="toggle_hamburger()">
+      <i class="fa fa-bars"></i>
+    </a>
+    <!-- Navigation links (hidden by default) -->
+    <div id="links">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+    </div>
+    
+    <!-- <a href="index.html">HOME</a> -->
+    <!-- <a href="about.html">ABOUT</a> -->
   </div>
 
   <h3>Daily data on how expensive houses are in Ireland</h3>
@@ -53,6 +69,7 @@
       <option value='wicklow'>Wicklow</option>
 
     </select>
+    <br><br>
     <label for="property_type">Property Type:</label>
     <select class="selection" name="property_type" id="property_type">
       <option value="any">Any Property</option>
@@ -87,10 +104,11 @@
     <br>
   </div>
 
+  <p id="date">Data taken from <a href="https://daft.ie">daft.ie</a></p>
+
 
   <div class="footer">
-    <p id="date">Data taken from <a href="https://daft.ie">daft.ie</a></p>
-    <p>Crafted with care in Ireland</p>
+    <p>Crafted with care in Ireland.</p>
     <p>© 2023</p>
   </div> 
 
@@ -179,6 +197,15 @@
         }
       }
     });
+
+    function toggle_hamburger() {
+      var x = document.getElementById("links");
+      if (x.style.display === "block") {
+        x.style.display = "none";
+      } else {
+        x.style.display = "block";
+      }
+    } 
 
   </script>
 
