@@ -159,7 +159,7 @@ for location in location_list:
 json_string = json.dumps(data)
 print(json_string)
 
-today = str(datetime.date.today())
+today = datetime.date.today().strftime("%d %B %Y")
 
 filename = "data/data_" + today + ".json"
 
