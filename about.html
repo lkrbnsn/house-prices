@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Irish House Prices Today</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+
+<body>
+
+  <div class="header">
+    <img src="logo_full.png" id="logo">
+    <!-- "Hamburger menu" / "Bar icon" to toggle the navigation links -->
+    <a href="javascript:void(0);" class="icon" onclick="toggle_hamburger()">
+      <i class="fa fa-bars"></i>
+    </a>
+    <!-- Navigation links (hidden by default) -->
+    <div id="links">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+    </div>
+    
+  </div>
+
+  <div class="content">
+
+    <h3>Daily data on how expensive houses are in Ireland</h3>
+    <p><a href="index.html">housepricestoday.ie</a> shows the latest information on the distribution and weekly trend of property prices in Ireland. Data is taken daily from <a href="https://daft.ie">daft.ie</a>, which lists 90% of all properties for sale in Ireland. </p>
+    &nbsp
+
+  </div>
+
+  <div class="footer">
+    <p>Crafted with care in Ireland.</p>
+    <p>&copy 2023</p>
+  </div> 
+
+  <script>
+
+    function toggle_hamburger() {
+      var x = document.getElementById("links");
+      if (x.style.display === "block") {
+        x.style.display = "none";
+      } else {
+        x.style.display = "block";
+      }
+    } 
+
+  </script>
+
+</body>
+</html>

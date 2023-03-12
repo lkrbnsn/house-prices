@@ -12,8 +12,6 @@
 <body>
 
   <div class="header">
-    <!-- <h1>Irish House Prices Today</h1> -->
-    <!-- <a href="index.html"><img src="logo_full.png" id="logo"></a> -->
     <img src="logo_full.png" id="logo">
     <!-- "Hamburger menu" / "Bar icon" to toggle the navigation links -->
     <a href="javascript:void(0);" class="icon" onclick="toggle_hamburger()">
@@ -25,91 +23,92 @@
       <a href="about.html">About</a>
     </div>
     
-    <!-- <a href="index.html">HOME</a> -->
-    <!-- <a href="about.html">ABOUT</a> -->
   </div>
 
-  <h3>Daily data on how expensive houses are in Ireland</h3>
+  <div class="content">
 
-  <form>
-    <label for="location">Location:</label>
-    <select class="selection" name="location" id="location">
-      <option value='all'>All</option>
-      <option value='antrim'>Antrim</option>
-      <option value='armagh'>Armagh</option>
-      <option value='cavan'>Cavan</option>
-      <option value='carlow'>Carlow</option>
-      <option value='clare'>Clare</option>
-      <option value='cork'>Cork</option>
-      <option value='derry'>Derry</option>
-      <option value='down'>Down</option>
-      <option value='donegal'>Donegal</option>
-      <option value='dublin'>Dublin</option>
-      <option value='fermanagh'>Fermanagh</option>
-      <option value='galway'>Galway</option>
-      <option value='kerry'>Kerry</option>
-      <option value='kildare'>Kildare</option>
-      <option value='kilkenny'>Kilkenny</option>
-      <option value='laois'>Laois</option>
-      <option value='mayo'>Mayo</option>
-      <option value='meath'>Meath</option>
-      <option value='monaghan'>Monaghan</option>
-      <option value='leitrim'>Leitrim</option>
-      <option value='limerick'>Limerick</option>
-      <option value='longford'>Longford</option>
-      <option value='louth'>Louth</option>
-      <option value='offaly'>Offaly</option>
-      <option value='roscommon'>Roscommon</option>
-      <option value='sligo'>Sligo</option>
-      <option value='tipperary'>Tipperary</option>
-      <option value='tyrone'>Tyrone</option>
-      <option value='waterford'>Waterford</option>
-      <option value='westmeath'>Westmeath</option>
-      <option value='wexford'>Wexford</option>
-      <option value='wicklow'>Wicklow</option>
+    <h3>Daily data on how expensive houses are in Ireland</h3>
 
-    </select>
-    <br><br>
-    <label for="property_type">Property Type:</label>
-    <select class="selection" name="property_type" id="property_type">
-      <option value="any">Any Property</option>
-      <option value="houses">House</option>
-      <option value="detached-houses">Detached House</option>
-      <option value="semi-detached-houses">Semi-Detached House</option>
-      <option value="terraced-houses">Terraced House</option>
-      <option value="end-of-terrace-houses">End-of-Terrace House</option>
-      <option value="townhouses">Townhouse</option>
-      <option value="duplexes">Duplex</option>
-      <option value="bungalows">Bungalow</option>
-      <option value="apartments">Apartment</option>
-      <option value="studio-apartments">Studio Apartment</option>
-      <option value="sites">Site</option>
-    </select>
-    <br><br>
-    <input class="selection" type="submit" value="Show Prices">
-  </form>
+    <form>
+      <label for="location">Location:</label>
+      <select class="selection" name="location" id="location">
+        <option value='all'>All</option>
+        <option value='antrim'>Antrim</option>
+        <option value='armagh'>Armagh</option>
+        <option value='cavan'>Cavan</option>
+        <option value='carlow'>Carlow</option>
+        <option value='clare'>Clare</option>
+        <option value='cork'>Cork</option>
+        <option value='derry'>Derry</option>
+        <option value='down'>Down</option>
+        <option value='donegal'>Donegal</option>
+        <option value='dublin'>Dublin</option>
+        <option value='fermanagh'>Fermanagh</option>
+        <option value='galway'>Galway</option>
+        <option value='kerry'>Kerry</option>
+        <option value='kildare'>Kildare</option>
+        <option value='kilkenny'>Kilkenny</option>
+        <option value='laois'>Laois</option>
+        <option value='mayo'>Mayo</option>
+        <option value='meath'>Meath</option>
+        <option value='monaghan'>Monaghan</option>
+        <option value='leitrim'>Leitrim</option>
+        <option value='limerick'>Limerick</option>
+        <option value='longford'>Longford</option>
+        <option value='louth'>Louth</option>
+        <option value='offaly'>Offaly</option>
+        <option value='roscommon'>Roscommon</option>
+        <option value='sligo'>Sligo</option>
+        <option value='tipperary'>Tipperary</option>
+        <option value='tyrone'>Tyrone</option>
+        <option value='waterford'>Waterford</option>
+        <option value='westmeath'>Westmeath</option>
+        <option value='wexford'>Wexford</option>
+        <option value='wicklow'>Wicklow</option>
 
-  &nbsp
-  <p id="message"></p>
+      </select>
+      <br><br>
+      <label for="property_type">Property Type:</label>
+      <select class="selection" name="property_type" id="property_type">
+        <option value="any">Any Property</option>
+        <option value="houses">House</option>
+        <option value="detached-houses">Detached House</option>
+        <option value="semi-detached-houses">Semi-Detached House</option>
+        <option value="terraced-houses">Terraced House</option>
+        <option value="end-of-terrace-houses">End-of-Terrace House</option>
+        <option value="townhouses">Townhouse</option>
+        <option value="duplexes">Duplex</option>
+        <option value="bungalows">Bungalow</option>
+        <option value="apartments">Apartment</option>
+        <option value="studio-apartments">Studio Apartment</option>
+        <option value="sites">Site</option>
+      </select>
+      <br><br>
+      <input class="selection" type="submit" value="Show Prices">
+    </form>
 
-  <div id="distribution">
-    <br>
-    <canvas id="distribution_chart" style="width:100%;max-width:600px"></canvas>
-    <br>
+    &nbsp
+    <p id="message"></p>
+
+    <div id="distribution">
+      <br>
+      <canvas id="distribution_chart" style="width:90%;max-width:600px"></canvas>
+      <br>
+    </div>
+
+    <div>
+      <br>
+      <canvas id="trend_chart" style="width:100%;max-width:600px"></canvas>   
+      <br>
+    </div>
+
+    <p id="date">Data taken from <a href="https://daft.ie">daft.ie</a></p>
+
   </div>
-
-  <div>
-    <br>
-    <canvas id="trend_chart" style="width:100%;max-width:600px"></canvas>   
-    <br>
-  </div>
-
-  <p id="date">Data taken from <a href="https://daft.ie">daft.ie</a></p>
-
 
   <div class="footer">
     <p>Crafted with care in Ireland.</p>
-    <p>© 2023</p>
+    <p>&copy 2023</p>
   </div> 
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
@@ -133,7 +132,7 @@
       property_type = params.get('property_type');
     }
 
-    document.getElementById("date").innerHTML = "Data taken from <a href=\"https://daft.ie\">daft.ie</a> on " + date;
+    document.getElementById("date").innerHTML = "Data taken from <a href=\"https://daft.ie\">daft.ie</a> on <br>" + date;
 
     // Create human friendly strings
     let property_type_string = property_type.replace(/-/gi, " ");
@@ -144,10 +143,10 @@
     if (property_location_string == "All") {
       property_location_string = "Ireland";
     }
-    document.getElementById("message").innerHTML = "There are " + obj[property_location][property_type]["total"] + " " + property_type_string + " for sale in " + property_location_string + ", with an average asking price of €" + obj[property_location][property_type]["mean"];
+    document.getElementById("message").innerHTML = "There are " + obj[property_location][property_type]["total"] + " " + property_type_string + " for sale in " + property_location_string + ", with an average asking price of \u20AC" + obj[property_location][property_type]["mean"];
 
     // Values we want to plot against
-    var xValues = ["0-100", "100-200", "200-300", "300-400", "400-500", "500-600", "600-700", "700-800", "800-900", "900-1000", "1000+"];
+    var xValues = ["0-100", "100-200", "200-300", "300-400", "400-500", "500-600", "600-700", "700-800", "800-900", "900-1000", "€1m+"];
     var yValues = obj[property_location][property_type]["bins"];
 
     new Chart("distribution_chart", {
@@ -194,6 +193,12 @@
         title: {
           display: true,
           text: "Weekly Trend"
+        },
+        scales: {
+          x: {
+            display: true,
+            text: "Average Price (€)"
+          }
         }
       }
     });
