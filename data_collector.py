@@ -161,7 +161,7 @@ print(json_string)
 
 today = datetime.date.today().strftime("%d %B %Y")
 
-filename = "data/data_" + today + ".json"
+filename = "data/data_" + str(datetime.date.today())  + ".json"
 
 with open(filename, 'w') as data_file:
     data_file.write("var data = \'" + json_string + "\';\n")
