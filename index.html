@@ -2,8 +2,8 @@
 <html>
 <head>
   <title>Irish House Prices Today</title>
-  <meta name="description" content="Data and graphs of Irish house prices">
-  <meta name="keywords" content="House prices, housing, daft">
+  <meta name="description" content="Data and trend graphs of Irish house prices, updated daily">
+  <meta name="keywords" content="House prices, housing, daft, graph, trend, Ireland">
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
@@ -21,7 +21,7 @@
     </a>
     <!-- Navigation links (hidden by default) -->
     <div id="links">
-      <a href="index.html">Home</a>
+      <a href="./">Home</a>
       <a href="about.html">About</a>
     </div>
     
@@ -94,12 +94,14 @@
 
     <div id="distribution">
       <br>
+      <h5>Price Distribution</h5>
       <canvas id="distribution_chart" style="width:90%;max-width:600px"></canvas>
       <br>
     </div>
 
     <div>
       <br>
+      <h5>Weekly Trend Graph</h5>
       <canvas id="trend_chart" style="width:100%;max-width:600px"></canvas>   
       <br>
     </div>
@@ -170,7 +172,7 @@
         legend: {display: false},
         title: {
           display: true,
-          text: "Price Distribution"
+          // text: "Price Distribution"
         }
       }
     });
@@ -194,7 +196,7 @@
         legend: {display: false},
         title: {
           display: true,
-          text: "Weekly Trend"
+          // text: "Weekly Trend"
         }
       }
     });
